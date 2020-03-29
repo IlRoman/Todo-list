@@ -8,7 +8,7 @@ export const renderListItems = tasksList => {
     const listItemsElems = tasksList
         .sort((a, b) => b.date - a.date)
         .sort((a, b) => a.done - b.done)
-        .map(({ text, done, _id }) => {
+        .map(({ text, done, id }) => {
             const listItemElem = document.createElement('li');
             listItemElem.classList.add('list__item');
             if (done) {
@@ -16,7 +16,7 @@ export const renderListItems = tasksList => {
             }
             const checkboxElem = document.createElement('input');
             checkboxElem.setAttribute('type', 'checkbox');
-            listItemElem.setAttribute('data-id', _id);
+            listItemElem.setAttribute('data-id', id);
             checkboxElem.checked = done;
             checkboxElem.classList.add('list__item-checkbox');
 

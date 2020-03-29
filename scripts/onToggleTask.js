@@ -12,7 +12,7 @@ export const onToggleTask = element => {
     }
 
     let tasksList = localStorage.getItem('tasksList') ? JSON.parse(localStorage.getItem('tasksList')) : []
-    const taskId = tasksList.find(x => x._id == element.target.closest('.list__item').dataset.id);
+    const taskId = tasksList.find(x => x.id == element.target.closest('.list__item').dataset.id);
 
     const upDatedTask = {
         text: taskId.text,
@@ -22,7 +22,7 @@ export const onToggleTask = element => {
             : true
     }
 
-    updateNewTask(taskId._id, upDatedTask)
+    updateNewTask(taskId.id, upDatedTask)
         .then(() => getTasksList())
         .then(tasks => {
             localStorage.setItem('tasksList', JSON.stringify(tasks))

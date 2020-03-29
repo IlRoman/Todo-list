@@ -11,9 +11,9 @@ export const deleteEvent = element => {
     }
 
     let tasksList = localStorage.getItem('tasksList') ? JSON.parse(localStorage.getItem('tasksList')) : []
-    const taskId = tasksList.find(x => x._id == element.target.closest('.list__item').dataset.id);
+    const taskId = tasksList.find(x => x.id == element.target.closest('.list__item').dataset.id);
 
-    deleteNewTask(taskId._id)
+    deleteNewTask(taskId.id)
         .then(() => getTasksList())
         .then(tasks => {
             localStorage.setItem('tasksList', JSON.stringify(tasks))
